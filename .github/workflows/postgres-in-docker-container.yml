@@ -1,0 +1,36 @@
+name: PostgreSQL in Docker Container
+
+on:
+  workflow_dispatch:
+
+jobs:
+  postgres_db:
+    name: Check PostgreSQL service
+    runs-on: ${{ vars.JOBS_RUNNER }}
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: testdb
+        ports:
+          - 5432:5432
+        # health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Install PostgreSQL client
+        run: sudo apt-get -yqq install postgresql-client
+
+      - name: Check PostgreSQL Service
+        env:
+          PGPASSWORD: postgres
+        run: |
+          psql -h localhost -U postgres -d testdb -c 'SELECT version();'
