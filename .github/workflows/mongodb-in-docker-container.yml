@@ -1,0 +1,39 @@
+name: MongoDB in Docker Container
+
+on:
+  workflow_dispatch:
+
+jobs:
+  mongo_db:
+    name: Check MongoDB service
+    runs-on: ${{ vars.JOBS_RUNNER }}
+    services:
+      postgres:
+        image: mongo:7.0
+        env:
+          MONGO_INITDB_ROOT_USERNAME: admin
+          MONGO_INITDB_ROOT_PASSWORD: password
+        ports:
+          - 27017:27017
+        volumes:
+          - ./data/mongodb/db:/data/db
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Install MongoDB client
+        run: |
+          sudo apt-get install curl
+          wget -qO- https://www.mongodb.org/static/pgp/server-7.0.asc | sudo tee /etc/apt/trusted.gpg.d/server-7.0.asc
+          sudo apt-get install gnupg
+          echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+          sudo apt-get install -y mongodb-mongosh
+
+      - name: Check MongoDB Service
+        env:
+          PGPASSWORD: password
+        run: |
+          echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+
+      - name: Check MongoDB version
+        run: mongosh --version
