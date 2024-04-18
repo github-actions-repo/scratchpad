@@ -1,0 +1,13 @@
+name: Node.js CI - With Cache Locally
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    runs-on: ${{ vars.JOBS_RUNNER }}
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    - uses: ./.github/actions/build-node
