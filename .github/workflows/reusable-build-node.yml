@@ -9,4 +9,4 @@ jobs:
     runs-on: ${{ vars.JOBS_RUNNER }}
     steps:
       - name: Run build process
-        uses: github-actions-repo/scratchpad/.github/actions/reusable-workflow/build-node.yml@master
+        uses: github-actions-repo/scratchpad/.github/workflows/build-node.yml@master
