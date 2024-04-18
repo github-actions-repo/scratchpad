@@ -14,7 +14,7 @@ jobs:
       - id: is-even
         run: |
           echo "is-even=$(${{steps.generate-number.outputs.number}} % 2 == 0)" >> "$GITHUB_OUTPUT"
-          echo "Result = ${{ steps.generate-number.outputs.is-even }}"
+          echo "JOB_LEVEL_ENV=$is-even" >> "$GITHUB_OUTPUT"
           echo "The number is ${{steps.generate-number.outputs.number}}" >> $GITHUB_STEP_SUMMARY
 
   consumer-of-generator-odd:
