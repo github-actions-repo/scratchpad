@@ -14,13 +14,12 @@ jobs:
       - id: is-even
         run: |
           echo "is-even=$(${{steps.generate-number.outputs.number}} % 2 == 0)" >> "$GITHUB_OUTPUT"
-          echo "Answer is ${{steps.generate-number.outputs.is-even}}"
           echo "The number is ${{steps.generate-number.outputs.number}}" >> $GITHUB_STEP_SUMMARY
 
   consumer-of-generator-odd:
     needs: random-number-generator
     runs-on: ${{ vars.JOBS_RUNNER }}
-    if: ${{ !needs.random-number-generator.outputs.is-even }}
+    if: ${{ needs.random-number-generator.outputs.is-even == false }}
     steps:
       - run: echo "The number is ${{ needs.random-number-generator.outputs.number }} is odd"
 
