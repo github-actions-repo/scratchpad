@@ -1,0 +1,10 @@
+name: Node.js CI - Reusable Workflow
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  ci:
+    name: Run build process
+    uses: github-actions-repo/scratchpad/.github/actions/build-node.yml@master
