@@ -11,7 +11,8 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v4
 
-    - uses: ./.github/actions/build-node
+    - name: Install Node JS
+      uses: ./.github/actions/build-node
 
     - name: Send custom JSON data to Slack workflow
       id: slack
