@@ -23,7 +23,7 @@ jobs:
     steps:
       - run: |
           echo "The number is ${{ needs.random-number-generator.outputs.number }} is odd"
-          echo "Result: ${{needs.random-number-generator.outputs.is-even}}"
+          echo "The result is ${{ needs.random-number-generator.outputs.is-even }}"
 
   consumer-of-generator-even:
     needs: random-number-generator
