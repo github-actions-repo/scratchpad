@@ -6,5 +6,7 @@ on:
 
 jobs:
   ci:
-    name: Run build process
-    uses: github-actions-repo/scratchpad/.github/actions/build-node.yml@master
+    runs-on: ${{ vars.JOBS_RUNNER }}
+    steps:
+      - name: Run build process
+        uses: github-actions-repo/scratchpad/.github/actions/build-node.yml@master
