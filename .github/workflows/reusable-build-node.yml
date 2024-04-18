@@ -1,12 +1,9 @@
-name: Node.js CI Reusable Workflow
-
+name: Node.js CI - Reusable Workflow
 on:
   workflow_dispatch:
   push:
 
 jobs:
   ci:
-    runs-on: ${{ vars.JOBS_RUNNER }}
-    steps:
-      - name: Run build process
-        uses: github-actions-repo/scratchpad/.github/workflows/build-node.yml@master
+    name: run build process
+    uses: github-actions-repo/scratchpad/.github/workflows/build-node.yml@master
