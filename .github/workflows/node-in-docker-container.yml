@@ -1,4 +1,4 @@
-name: Node Version in a docker container
+name: Node JS in a docker container
 
 on:
   workflow_dispatch:
