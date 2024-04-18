@@ -1,0 +1,29 @@
+name: Commit Status Workflow
+
+on:
+  workflow_dispatch:
+
+permissions:
+  statuses: write
+
+jobs:
+  commit-status:
+    runs-on: ${{ vars.JOBS_RUNNER }}
+    steps:
+    - name: Set commit status to successful
+      uses: actions/github-script@v7
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          const { owner, repo } = context.repo;
+          const sha = context.sha;
+          let state = "success";
+          let description = "Everything is successful!";
+          await github.rest.repos.createCommitStatus({
+            owner,
+            repo,
+            sha,
+            state,
+            description,
+            context: "ci/test"
+          });
