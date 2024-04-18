@@ -1,0 +1,44 @@
+name: Node.js CI - With Cache and Artifact Upload
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+    runs-on: ${{ vars.JOBS_RUNNER }}
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Restore Cache
+      id: cache
+      uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-npm-
+
+    - name: Use Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+        cache: 'npm'
+
+    - name: run build
+      run: npm ci
+
+    - run: npm run build --if-present
+
+    - name: Save Cache
+      if: steps.cache.outputs.cache-hit != 'true'
+      uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: my-app
+        path: dist/
