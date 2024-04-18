@@ -1,5 +1,5 @@
 const request = require("supertest");
-const { app, server } = require("../dist/index");
+const { app, server, sum } = require("../src/index.js");
 
 afterAll(() => {
   server.close();
@@ -11,4 +11,8 @@ describe("Simple Test", () => {
     expect(response.status).toBe(200);
     expect(response.text).toBe("Hello World!");
   });
+});
+
+test("adds 1 + 2 to equal 3", () => {
+  expect(sum(1, 2)).toBe(3);
 });

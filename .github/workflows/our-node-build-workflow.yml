@@ -1,0 +1,13 @@
+name: Node.js CI workflow
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+  ci:
+    name: Deployment
+    uses: github-actions-repo/scratchpad/.github/workflows/build-node.yml@master
