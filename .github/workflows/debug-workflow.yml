@@ -1,0 +1,13 @@
+name: Debug Workflow
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  debug:
+    runs-on: ${{ vars.JOBS_RUNNER }}
+    steps:
+      - name: Debug Workflow
+        uses: hmarr/debug-action@v3
