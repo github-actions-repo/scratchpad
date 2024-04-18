@@ -11,4 +11,4 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Build Node
-      uses: github-actions-repo/scratchpad/.github/actions/workflows/build-node.yml@master
+      uses: github-actions-repo/scratchpad/.github/workflows/build-node.yml@master
