@@ -19,13 +19,16 @@ jobs:
   consumer-of-generator-odd:
     needs: random-number-generator
     runs-on: ${{ vars.JOBS_RUNNER }}
-    if: ${{ needs.random-number-generator.outputs.is-even == false }}
+    if: ${{ !needs.random-number-generator.outputs.is-even }}
     steps:
-      - run: echo "The number is ${{ needs.random-number-generator.outputs.number }} is odd"
+      - run: |
+          echo "The number is ${{ needs.random-number-generator.outputs.number }} is odd"
+          echo "Result: ${{needs.random-number-generator.outputs.is-even}}"
 
   consumer-of-generator-even:
     needs: random-number-generator
     runs-on: ${{ vars.JOBS_RUNNER }}
     if: ${{ needs.random-number-generator.outputs.is-even }}
     steps:
-      - run: echo "The number is ${{ needs.random-number-generator.outputs.number }} is even"
+      - run: |
+          echo "The number is ${{ needs.random-number-generator.outputs.number }} is even"
