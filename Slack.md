@@ -26,3 +26,13 @@ First, you’re going to want to install the application into a Slack workspace,
    ```
 
 7. We'll look at how we can send data from a workflow to a chat within Slack.
+
+
+# Sending notifications from GitHub Actions to Slack
+
+Please refer to some of the following actions for more inspiration or to save yourself some time if you’re looking to introduce this in your organization:
+
+[Slack Notify Build](https://github.com/marketplace/actions/slack-notify-build)
+[Slack - GitHub Actions Slack integration](https://github.com/marketplace/actions/slack-github-actions-slack-integration)
+[action-slack](https://github.com/marketplace/actions/action-slack)
+[Slack Notify](https://github.com/marketplace/actions/slack-notify)
