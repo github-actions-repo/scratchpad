@@ -5,7 +5,7 @@ on:
 
 jobs:
   mongo_db:
-    name: Check MongoDB service
+    name: Install MongoDB database
     runs-on: ${{ vars.JOBS_RUNNER }}
     services:
       postgres:
