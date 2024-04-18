@@ -1,4 +1,4 @@
-name: Node.js CI - With no cache
+name: Node.js CI - With No Cache
 
 on:
   workflow_dispatch:
