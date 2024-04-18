@@ -1,0 +1,13 @@
+name: Production deployment
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  live-job:
+    environment: live
+    runs-on: ${{ vars.JOBS_RUNNER }}
+    steps:
+    - run: echo "${{ vars.ENV_VAL }}"  >> $GITHUB_STEP_SUMMARY
