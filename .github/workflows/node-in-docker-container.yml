@@ -1,0 +1,13 @@
+name: Node Version in a docker container
+
+on:
+  workflow_dispatch:
+
+jobs:
+  node_job:
+    runs-on: ${{ vars.JOBS_RUNNER }}
+    container:
+      image: node:21-alpine3.18
+    steps:
+      - name: Run a command
+        run: node --version
