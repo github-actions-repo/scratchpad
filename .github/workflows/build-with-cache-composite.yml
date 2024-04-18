@@ -1,0 +1,14 @@
+name: Node.js CI - With Cache Composite
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ${{ vars.JOBS_RUNNER }}
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Build Node
+      uses: github-actions-repo/scratchpad/.github/actions/build-node@master
