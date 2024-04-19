@@ -19,7 +19,7 @@ jobs:
         include: 
           - name: scratchpad
             owner: github-actions-repo
-          - name: RichChecks
+          - name: course-code
             owner: github-actions-repo
 
     steps:
