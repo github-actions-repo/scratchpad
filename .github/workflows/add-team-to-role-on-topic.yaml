@@ -1,4 +1,4 @@
-name: Add team to repository with perms - by filter on topic
+name: Add Team to Repository with perms - Filter on Topic
 
 on:
   workflow_dispatch:
