@@ -12,7 +12,7 @@ jobs:
     if: github.event_name == 'pull_request'
     runs-on: ${{ vars.JOBS_RUNNER }}
     steps:
-      - name: step to create a check in_progress
+      - name: Step to create a check in_progress
         uses: actions/github-script@v7
         id: create-check
         with:
@@ -38,7 +38,7 @@ jobs:
 
       - run: sleep 10
 
-      - name: step to update check completed
+      - name: Step to update check completed
         uses: actions/github-script@v7
         id: create-check-completed
         with:
@@ -53,7 +53,7 @@ jobs:
                 "annotation_level": "failure",
                 "message": "This readme fails the special readme test."
               }];
-              
+
             // Create the check with an image
             const check = await github.rest.checks.update({
               owner: process.env.GITHUB_REPOSITORY.split('/')[0],
