@@ -1,4 +1,4 @@
-name: Automation Comment Issues Made
+name: Automation Issues Comment Made with Bot
 
 on:
   issue_comment:
