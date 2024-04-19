@@ -29,7 +29,7 @@ jobs:
         id: get-repo
         uses: echapmanFromBunnings/repository-query@v1.3
         with:
-          repo-owner: JediSchools
+          repo-owner: github-actions-repo
           repo-token: ${{ inputs.pat }}
           topic-filter: '${{ inputs.filter-topic }}'
   
@@ -42,10 +42,10 @@ jobs:
       max-parallel: 2
       fail-fast: false
     steps:
-      - name: mask pat
+      - name: Mask Personal Acess Token (PAT)
         run: echo "::add-mask::${{ inputs.pat }}"
       - name: Add role to repo - ${{ inputs.topic }}
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         env:
           OWNER: ${{ matrix.owner }}
           REPO: ${{ matrix.name }}
