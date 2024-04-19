@@ -1,4 +1,4 @@
-name: Create a check in a steps
+name: Create a check in a steps 1
 
 on:
   pull_request:
@@ -34,6 +34,6 @@ jobs:
                 text: "You can put text in here"
               }
             });
-            
+
             console.log(`In progress check created with ID: ${check.data.id}`);
             return check.data.id
