@@ -23,7 +23,7 @@ jobs:
             owner: github-actions-repo
 
     steps:
-      - name: mask pat
+      - name: Mask Personal Acess Token (PAT)
         run: echo "::add-mask::${{ inputs.pat }}"
       - name: Add missing topic to repo - ${{ inputs.topic }}
         uses: actions/github-script@v7
