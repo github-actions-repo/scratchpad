@@ -1,3 +1,5 @@
+name: Release management communication with Slack
+
 on:
   release:
     types: [published]
