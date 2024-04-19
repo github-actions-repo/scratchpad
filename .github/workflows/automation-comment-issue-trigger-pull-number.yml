@@ -11,7 +11,7 @@ permissions:
   issues: write
 
 jobs:
-  event-recieved:
+  event-received:
     runs-on: ${{ vars.JOBS_RUNNER }}
     steps:
       - name: Debug actions
