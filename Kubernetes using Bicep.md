@@ -59,3 +59,17 @@
     ```
 
     Amend the values in this command with a username and a DNS prefix of your choice; you will also need to provide the public key we discussed before. Press Enter, and you should see it running. If you received an error, and it’s not a validation error, try doing az logout and az login, and then try again.
+
+
+To test that this works, we can run the following command
+
+```
+az aks get-credentials --resource-group scratchpad-rg --name actionsCluster
+```
+
+You'll then get a response, saying that the context was merged into the current one. Now, run the following command to validate that the returned nodes are AKS Pods.
+
+```
+kubectl get nodes
+kubectl get events
+```
