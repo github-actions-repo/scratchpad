@@ -16,7 +16,7 @@ on:
 
 jobs:
   get-repos:
-    runs-on: generic
+    runs-on: ${{ vars.JOBS_RUNNER }}
     outputs:
       repojson: ${{ steps.get-repo.outputs.repojson }}
     steps:
@@ -29,7 +29,7 @@ jobs:
           topic-filter: '${{ inputs.filter-topic }}'
   
   add-topic:
-    runs-on: generic
+    runs-on: ${{ vars.JOBS_RUNNER }}
     needs: get-repos
     strategy:
       matrix:
