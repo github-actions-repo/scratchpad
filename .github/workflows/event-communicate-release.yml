@@ -1,0 +1,15 @@
+on:
+  release:
+    types: [published]
+
+jobs:
+  communicate-release:
+    runs-on: ${{ vars.JOBS_RUNNER }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Send Slack Message
+        uses: ./.github/actions/communicate-release-slack
+        with:
+          slack-url: ${{ secrets.SLACK_WEBHOOK_URL }}
