@@ -1,4 +1,4 @@
-name: Add Topic to Repository
+name: Add Topic to Repository (Topic)
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
         description: topic to add
         required: true
       pat:
-        description: PAT with repo admin access for organisaiton
+        description: PAT with repo admin access for organisation
         required: true
         default: PUT_PAT_HERE
 
