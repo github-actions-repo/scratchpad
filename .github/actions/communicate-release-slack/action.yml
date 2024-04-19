@@ -1,4 +1,4 @@
-name: Communicate release to slack
+name: Communicate release to Slack
 
 description: |
   Communicates the body of a release and key data from a release object to the slack API
@@ -17,12 +17,12 @@ runs:
         echo "::add-mask::${{ inputs.slack-url }}"
       shell: bash
 
-    - name: manipulate payload for slack
+    - name: Manipulate payload for slack
       id: prepare-payload
       run: |
         details="${{ github.event.release.body }}"
         processed_details=${details//$'\n'/\\n} # Replace newlines with the string \n
-        echo "::set-output name=processed_details::$processed_details" 
+        echo "processed_details={$processed_details}" >> $GITHUB_OUTPUT
       shell: bash
 
     - name: Send Release Info to Slack
