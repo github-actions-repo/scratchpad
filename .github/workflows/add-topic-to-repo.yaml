@@ -13,7 +13,7 @@ on:
 
 jobs:
   add-topic:
-    runs-on: generic
+    runs-on: ${{ vars.JOBS_RUNNER }}
     strategy:
       matrix:
         include: 
