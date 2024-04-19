@@ -1,4 +1,4 @@
-name: Automation Comment Made
+name: Automation Issues Comment Made
 
 on:
   issue_comment:
