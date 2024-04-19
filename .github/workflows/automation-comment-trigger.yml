@@ -1,0 +1,31 @@
+name: Automation Comment Made
+
+on:
+  issue_comment:
+    types:
+      - created
+
+env:
+  TRIGGER_WORD: "//issuebot"
+
+jobs:
+  event-received:
+    runs-on: ${{ vars.JOBS_RUNNER }}
+    steps:
+      - name: Debug Actions
+        uses: hmarr/debug-action@v3
+
+      - name: Check if trigger word is mentioned
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const targetString = context.payload.comment.body;
+            const wordToFind = process.env.TRIGGER_WORD;
+
+            if (targetString.includes(wordToFind)) {
+              console.log(`The word "${wordToFind}" was found in the string "${targetString}".`);
+              return true;
+            } else {
+              console.log(`The word "${wordToFind}" was not found in the string "${targetString}".`);
+              return false;
+            }
