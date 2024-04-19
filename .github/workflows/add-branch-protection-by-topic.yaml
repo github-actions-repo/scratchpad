@@ -1,4 +1,4 @@
-name: Add Branch Protection Config to Repository - Filter on Topic
+name: Add Branch Protection Config to Repository (Filter on Topic)
 
 on:
   workflow_dispatch:
